@@ -1,5 +1,4 @@
 import k from "../kaplayCtx";
-import { SetCamScale } from "../utils";
 k.loadSprite("hub", "/tilemaps/mainmap.png");
 k.loadFont("Bitty", "/fonts/Bitty.ttf");
 k.loadSprite("protag", "/sprites/characters/player.png", {
@@ -48,7 +47,7 @@ k.loadSprite("protag", "/sprites/characters/player.png", {
 export default async function hub() {
   const mapData = await (await fetch("/tilemaps/mainmap.json")).json();
   const layers = mapData.layers;
-  const map = k.add([k.sprite("hub"), k.pos(0), k.scale(4)]);
+  const map = k.add([k.sprite("hub"), k.pos(0), k.scale(2)]);
   const player = k.make([
     k.sprite("protag", { anim: "idle_down" }),
     k.area({
@@ -57,9 +56,9 @@ export default async function hub() {
     k.body(),
     k.anchor("center"),
     k.pos(),
-    k.scale(3),
+    k.scale(1),
     {
-      speed: 200,
+      speed: 150,
       direction: "down",
       isInDialogue: false,
     },
@@ -83,8 +82,8 @@ export default async function hub() {
       for (const entity of layer.objects) {
         if (entity.name === "Player") {
           player.pos = k.vec2(
-            (map.pos.x + entity.x) * 4, //scale factor is 4
-            (map.pos.y + entity.y) * 4
+            (map.pos.x + entity.x) * 2, //scale factor is 2
+            (map.pos.y + entity.y) * 2
           );
           k.add(player);
           continue;
@@ -93,10 +92,8 @@ export default async function hub() {
     }
   }
 
-  SetCamScale(k);
-
   k.onUpdate(() => {
-    k.setCamPos(player.worldPos().x, player.worldPos().y + 100);
+    k.setCamPos(player.worldPos().x, player.worldPos().y);
   });
 
   k.onMouseDown((mouseBtn) => {
@@ -182,7 +179,7 @@ export default async function hub() {
     if (player.isInDialogue) return;
     if (keyMap[0]) {
       player.flipX = false;
-      if (player.getCurAnim().name !== "walk-side") player.play("walk-side");
+      if (player.getCurAnim().name !== "walk_right") player.play("walk_right");
       player.direction = "right";
       player.move(player.speed, 0);
       return;
@@ -190,31 +187,31 @@ export default async function hub() {
 
     if (keyMap[1]) {
       player.flipX = true;
-      if (player.getCurAnim().name !== "walk-side") player.play("walk-side");
+      if (player.getCurAnim().name !== "walk_right") player.play("walk_right");
       player.direction = "left";
       player.move(-player.speed, 0);
       return;
     }
 
     if (keyMap[2]) {
-      if (player.getCurAnim().name !== "walk-up") player.play("walk-up");
+      if (player.getCurAnim().name !== "walk_up") player.play("walk_up");
       player.direction = "up";
       player.move(0, -player.speed);
       return;
     }
 
     if (keyMap[3]) {
-      if (player.getCurAnim().name !== "walk-down") player.play("walk-down");
+      if (player.getCurAnim().name !== "walk_down") player.play("walk_down");
       player.direction = "down";
       player.move(0, player.speed);
     }
   });
   const WelcomeText = k.add([
-    k.pos(75, 350),
-    k.text("Welcome to LearnMeet!\nLeft Click to move", {
+    k.pos(25, 200),
+    k.text("Welcome to LearnMeet!\nLeft Click/Arrow Keys to move", {
       align: "center",
       font: "Bitty",
-      size: 64,
+      size: 28,
     }),
   ]);
 }
