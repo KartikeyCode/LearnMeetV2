@@ -58,7 +58,7 @@ export default async function hub() {
     k.pos(),
     k.scale(4),
     {
-      speed: 250,
+      speed: 350,
       direction: "down",
       isInDialogue: false,
     },
