@@ -180,26 +180,26 @@
                  "y":200.25
                 }, 
                 {
-                 "height":63.5,
+                 "height":79.375,
                  "id":17,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":5,
-                 "x":42.75,
-                 "y":223.75
+                 "width":11,
+                 "x":43,
+                 "y":208.375
                 }, 
                 {
-                 "height":63.5,
+                 "height":79.5,
                  "id":18,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":4.25,
-                 "x":208,
-                 "y":224.25
+                 "width":10.5,
+                 "x":202.75,
+                 "y":208.25
                 }, 
                 {
                  "height":15.5,
