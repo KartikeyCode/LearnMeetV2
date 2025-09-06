@@ -1,6 +1,7 @@
 import k from "../kaplayCtx";
 import { SetCamScale } from "../utils";
 k.loadSprite("hub", "/tilemaps/mainmap.png");
+k.loadFont("Bitty", "/fonts/Bitty.ttf");
 k.loadSprite("protag", "/sprites/characters/player.png", {
   sliceX: 6, //no of cols in the spritesheet
   sliceY: 10, // no of rows in the spritesheet
@@ -47,7 +48,7 @@ k.loadSprite("protag", "/sprites/characters/player.png", {
 export default async function hub() {
   const mapData = await (await fetch("/tilemaps/mainmap.json")).json();
   const layers = mapData.layers;
-  const map = k.add([k.sprite("hub"), k.pos(0), k.scale(3)]);
+  const map = k.add([k.sprite("hub"), k.pos(0), k.scale(4)]);
   const player = k.make([
     k.sprite("protag", { anim: "idle_down" }),
     k.area({
@@ -56,7 +57,7 @@ export default async function hub() {
     k.body(),
     k.anchor("center"),
     k.pos(),
-    k.scale(2),
+    k.scale(3),
     {
       speed: 200,
       direction: "down",
@@ -82,8 +83,8 @@ export default async function hub() {
       for (const entity of layer.objects) {
         if (entity.name === "Player") {
           player.pos = k.vec2(
-            (map.pos.x + entity.x) * 3, //scale factor is 4
-            (map.pos.y + entity.y) * 3
+            (map.pos.x + entity.x) * 4, //scale factor is 4
+            (map.pos.y + entity.y) * 4
           );
           k.add(player);
           continue;
@@ -208,4 +209,12 @@ export default async function hub() {
       player.move(0, player.speed);
     }
   });
+  const WelcomeText = k.add([
+    k.pos(75, 350),
+    k.text("Welcome to LearnMeet!\nLeft Click to move", {
+      align: "center",
+      font: "Bitty",
+      size: 64,
+    }),
+  ]);
 }
