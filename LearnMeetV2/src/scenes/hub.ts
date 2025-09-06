@@ -47,7 +47,7 @@ k.loadSprite("protag", "/sprites/characters/player.png", {
 export default async function hub() {
   const mapData = await (await fetch("/tilemaps/mainmap.json")).json();
   const layers = mapData.layers;
-  const map = k.add([k.sprite("hub"), k.pos(0), k.scale(5)]);
+  const map = k.add([k.sprite("hub"), k.pos(0), k.scale(3)]);
   const player = k.make([
     k.sprite("protag", { anim: "idle_down" }),
     k.area({
@@ -56,9 +56,9 @@ export default async function hub() {
     k.body(),
     k.anchor("center"),
     k.pos(),
-    k.scale(4),
+    k.scale(2),
     {
-      speed: 300,
+      speed: 200,
       direction: "down",
       isInDialogue: false,
     },
@@ -82,8 +82,8 @@ export default async function hub() {
       for (const entity of layer.objects) {
         if (entity.name === "Player") {
           player.pos = k.vec2(
-            (map.pos.x + entity.x) * 5, //scale factor is 4
-            (map.pos.y + entity.y) * 5
+            (map.pos.x + entity.x) * 3, //scale factor is 4
+            (map.pos.y + entity.y) * 3
           );
           k.add(player);
           continue;
@@ -95,7 +95,7 @@ export default async function hub() {
   SetCamScale(k);
 
   k.onUpdate(() => {
-    k.setCamPos(player.worldPos().x, player.worldPos().y - 100);
+    k.setCamPos(player.worldPos().x, player.worldPos().y + 100);
   });
 
   k.onMouseDown((mouseBtn) => {
