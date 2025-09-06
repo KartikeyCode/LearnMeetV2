@@ -47,7 +47,7 @@ k.loadSprite("protag", "/sprites/characters/player.png", {
 export default async function hub() {
   const mapData = await (await fetch("/tilemaps/mainmap.json")).json();
   const layers = mapData.layers;
-  const map = k.add([k.sprite("hub"), k.pos(0), k.scale(2)]);
+  const map = k.add([k.sprite("hub"), k.pos(0), k.scale(6)]);
   const player = k.make([
     k.sprite("protag", { anim: "idle_down" }),
     k.area({
@@ -56,9 +56,9 @@ export default async function hub() {
     k.body(),
     k.anchor("center"),
     k.pos(),
-    k.scale(1),
+    k.scale(4),
     {
-      speed: 150,
+      speed: 250,
       direction: "down",
       isInDialogue: false,
     },
@@ -82,8 +82,8 @@ export default async function hub() {
       for (const entity of layer.objects) {
         if (entity.name === "Player") {
           player.pos = k.vec2(
-            (map.pos.x + entity.x) * 2, //scale factor is 2
-            (map.pos.y + entity.y) * 2
+            (map.pos.x + entity.x) * 6, //scale factor is 4
+            (map.pos.y + entity.y) * 6
           );
           k.add(player);
           continue;
@@ -207,11 +207,11 @@ export default async function hub() {
     }
   });
   const WelcomeText = k.add([
-    k.pos(25, 200),
+    k.pos(150, 600),
     k.text("Welcome to LearnMeet!\nLeft Click/Arrow Keys to move", {
       align: "center",
       font: "Bitty",
-      size: 28,
+      size: 64,
     }),
   ]);
 }

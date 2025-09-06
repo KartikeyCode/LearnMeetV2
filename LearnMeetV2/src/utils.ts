@@ -1,6 +1,6 @@
 export function determineWidthAndHeight(): { width: number; height: number } {
   // Calculate responsive width and height based on window size
-  let width = Math.min(window.innerWidth, 400);
+  let width = Math.min(window.innerWidth);
 
   // Make width even for better pixel alignment
   if (width % 2 !== 0) {
