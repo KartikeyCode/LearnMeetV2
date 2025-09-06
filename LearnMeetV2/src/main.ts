@@ -1,6 +1,5 @@
-import kaplay from "kaplay";
-// import "kaplay/global"; // uncomment if you want to use without the k. prefix
+import k from "./kaplayCtx";
+import hub from "./scenes/hub";
 
-const k = kaplay();
-
-k.loadRoot("./"); // A good idea for Itch.io publishing later
+k.scene("hub", hub);
+k.go("hub");
