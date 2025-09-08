@@ -2,7 +2,9 @@
 	"compilerOptions": {
 		"noEmit": true,
 		"target": "esnext",
-		"moduleResolution": "node"
+		"module": "ESNext",
+		"moduleResolution": "node",
+		"types": ["node","vite/client"]
 	},
 	"include": [
 		"src/**/*.ts"
