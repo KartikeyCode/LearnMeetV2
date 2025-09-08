@@ -1,3 +1,4 @@
+@import "tailwindcss";
 /* Reset default browser styles */
 html, body {
   margin: 0;
