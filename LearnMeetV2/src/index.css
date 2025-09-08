@@ -1,0 +1,17 @@
+/* Reset default browser styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevents scrollbars if the canvas is slightly too large */
+}
+
+/* Ensure the root element and your game container take up the full screen */
+#root, .game-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+Treat the canvas as a block element to remove extra space below it
+canvas {
+  display: block;
+}

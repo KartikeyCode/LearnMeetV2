@@ -1,50 +1,51 @@
-import k from "../kaplayCtx";
-k.loadSprite("hub", "/tilemaps/mainmap.png");
-k.loadFont("Bitty", "/fonts/Bitty.ttf");
-k.loadSprite("protag", "/sprites/characters/player.png", {
-  sliceX: 6, //no of cols in the spritesheet
-  sliceY: 10, // no of rows in the spritesheet
-  anims: {
-    idle_down: {
-      //frame 0-5
-      from: 0,
-      to: 5,
-      loop: true,
-      speed: 6,
+import { KAPLAYCtx } from "kaplay";
+export default async function Hub(k: KAPLAYCtx) {
+  k.loadSprite("hub", "/tilemaps/mainmap.png");
+  k.loadFont("Bitty", "/fonts/Bitty.ttf");
+  k.loadSprite("protag", "/sprites/characters/player.png", {
+    sliceX: 6, //no of cols in the spritesheet
+    sliceY: 10, // no of rows in the spritesheet
+    anims: {
+      idle_down: {
+        //frame 0-5
+        from: 0,
+        to: 5,
+        loop: true,
+        speed: 6,
+      },
+      idle_right: {
+        from: 6,
+        to: 11,
+        loop: true,
+        speed: 6,
+      },
+      idle_up: {
+        from: 12,
+        to: 17,
+        loop: true,
+        speed: 6,
+      },
+      walk_down: {
+        from: 18,
+        to: 23,
+        loop: true,
+        speed: 6,
+      },
+      walk_right: {
+        from: 24,
+        to: 29,
+        loop: true,
+        speed: 6,
+      },
+      walk_up: {
+        from: 30,
+        to: 35,
+        loop: true,
+        speed: 6,
+      },
     },
-    idle_right: {
-      from: 6,
-      to: 11,
-      loop: true,
-      speed: 6,
-    },
-    idle_up: {
-      from: 12,
-      to: 17,
-      loop: true,
-      speed: 6,
-    },
-    walk_down: {
-      from: 18,
-      to: 23,
-      loop: true,
-      speed: 6,
-    },
-    walk_right: {
-      from: 24,
-      to: 29,
-      loop: true,
-      speed: 6,
-    },
-    walk_up: {
-      from: 30,
-      to: 35,
-      loop: true,
-      speed: 6,
-    },
-  },
-});
-export default async function hub() {
+  });
+
   const mapData = await (await fetch("/tilemaps/mainmap.json")).json();
   const layers = mapData.layers;
   const map = k.add([k.sprite("hub"), k.pos(0), k.scale(6)]);
@@ -206,7 +207,7 @@ export default async function hub() {
       player.move(0, player.speed);
     }
   });
-  const WelcomeText = k.add([
+  k.add([
     k.pos(150, 600),
     k.text("Welcome to LearnMeet!\nLeft Click/Arrow Keys to move", {
       align: "center",
