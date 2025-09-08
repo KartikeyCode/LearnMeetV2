@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import { resolve } from "path";
 import tailwindcss from "@tailwindcss/vite";
 const kaplayCongrats = () => {
   return {
@@ -22,6 +23,10 @@ export default defineConfig({
     // disable this for low bundle sizes
     sourcemap: true,
     rollupOptions: {
+      input: {
+        main: resolve(__dirname, "index.html"),
+        game: resolve(__dirname, "game.html"), // Assuming game.html is in the root
+      },
       output: {
         manualChunks: {
           kaplay: ["kaplay"],
