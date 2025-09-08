@@ -9,6 +9,7 @@
 		"check": "tsc"
 	},
 	"dependencies": {
+		"@supabase/supabase-js": "^2.57.2",
 		"@tailwindcss/vite": "^4.1.13",
 		"kaplay": "^3001.0.19",
 		"react": "^19.1.1",
