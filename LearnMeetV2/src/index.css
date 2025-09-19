@@ -3,7 +3,6 @@
 html, body {
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Prevents scrollbars if the canvas is slightly too large */
 }
 
 /* Ensure the root element and your game container take up the full screen */
