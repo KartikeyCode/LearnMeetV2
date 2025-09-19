@@ -19,7 +19,7 @@ function Navbar() {
     <nav className="bg-gray-800 text-white absolute top-0  shadow-md w-screen px-6 py-4 flex justify-between items-center">
       <Link
         to="/"
-        className="text-2xl font-bold text-white hover:text-blue-400 transition-colors"
+        className="text-2xl font-bold text-white hover:text-teal-400 transition-colors"
       >
         LearnMeet
       </Link>
