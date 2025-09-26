@@ -200,6 +200,9 @@ function createPlayer(k: KAPLAYCtx, player: Player, isLocal: boolean) {
     }
     sprite.flipX = player.flipX;
   });
-
+  sprite.onDestroy(() => {
+    //when player leaves remove player nametag also
+    k.destroy(nametag);
+  });
   return sprite;
 }
