@@ -179,6 +179,9 @@ function createPlayer(k: KAPLAYCtx, player: Player, isLocal: boolean) {
       font: "Bitty",
       size: 32,
       align: "center",
+      transform: {
+        color: k.Color.BLACK,
+      },
     }),
     k.pos(sprite.pos.x, sprite.pos.y - 30), // Position it above the sprite
     k.anchor("center"),

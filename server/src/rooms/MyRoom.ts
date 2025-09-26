@@ -3,10 +3,9 @@ import { MyRoomState, Player } from "./schema/MyRoomState";
 
 export class MyRoom extends Room<MyRoomState> {
   maxClients = 4;
+  state = new MyRoomState();
 
   onCreate(options: any) {
-    this.setState(new MyRoomState());
-
     // Listen for player movement and animation updates from the client
     this.onMessage("update", (client, data) => {
       const player = this.state.players.get(client.sessionId);
@@ -26,9 +25,9 @@ export class MyRoom extends Room<MyRoomState> {
     const player = new Player();
 
     // You can set a default spawn position or randomize it
-    player.x = 400;
-    player.y = 400;
-
+    player.x = 500;
+    player.y = 900;
+    player.sessionId = client.sessionId;
     // Set the username from the options sent by the client
     // Provide a default name if one isn't given
     player.username = options.username || "Guest";
