@@ -166,7 +166,7 @@ function createPlayer(k: KAPLAYCtx, player: Player, isLocal: boolean) {
     k.anchor("center"),
     k.scale(4),
     {
-      speed: 350,
+      speed: 420,
       direction: "down",
       isInDialogue: false,
     },
