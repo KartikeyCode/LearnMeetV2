@@ -146,11 +146,11 @@ export function createHubScene(k: KAPLAYCtx) {
     });
 
     k.add([
-      k.pos(150, 600),
-      k.text("Welcome to the Multiplayer Hub!", {
+      k.pos(200, 600),
+      k.text("Welcome to LearnMeet!\nLeft Click to move", {
         align: "center",
         font: "Bitty",
-        size: 48,
+        size: 64,
       }),
     ]);
   });
@@ -174,13 +174,25 @@ function createPlayer(k: KAPLAYCtx, player: Player, isLocal: boolean) {
     // Add a tag to differentiate local player if needed
     isLocal ? "local-player" : "remote-player",
   ]);
-
+  const nametag = k.add([
+    k.text(player.username, {
+      font: "Bitty",
+      size: 32,
+      align: "center",
+    }),
+    k.pos(sprite.pos.x, sprite.pos.y - 30), // Position it above the sprite
+    k.anchor("center"),
+  ]);
   // Smoothly interpolate position and update animations for all players
   sprite.onUpdate(() => {
     sprite.pos.x = k.lerp(sprite.pos.x, player.x, 15 * k.dt());
     sprite.pos.y = k.lerp(sprite.pos.y, player.y, 15 * k.dt());
 
-    if (sprite.getCurAnim().name !== player.anim) {
+    // --- ADD THIS BLOCK TO MAKE THE NAMETAG FOLLOW THE PLAYER ---
+    nametag.pos.x = sprite.pos.x;
+    nametag.pos.y = sprite.pos.y - 30; // Keep it positioned above
+
+    if (sprite.getCurAnim()?.name !== player.anim) {
       sprite.play(player.anim);
     }
     sprite.flipX = player.flipX;

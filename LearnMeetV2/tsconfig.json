@@ -5,7 +5,7 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
-    "esModuleInterop": false,
+    "esModuleInterop": true,  // Changed for better compatibility
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "strictNullChecks": false,
@@ -15,8 +15,9 @@
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "jsx": "react-jsx" // <-- THIS IS THE FIX
   },
-  "include": ["."],
+  "include": ["src"], // Changed to be more specific
   "exclude": ["node_modules"]
 }

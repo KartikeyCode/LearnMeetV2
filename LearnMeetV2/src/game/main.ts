@@ -22,10 +22,12 @@ async function main() {
   ]);
 
   try {
+    //fetch username from local storage
+    const username = localStorage.getItem("username") || "Guest";
     // 2. Join or create a room on the Colyseus server
     const room = await colyseusSDK.joinOrCreate<MyRoomState>("my_room", {
       // You can pass options here, like the player's name
-      username: "Player",
+      username: username,
     });
 
     // 3. Once connected, transition to the "hub" scene, passing the room object
