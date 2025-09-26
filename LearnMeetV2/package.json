@@ -11,6 +11,7 @@
 	"dependencies": {
 		"@supabase/supabase-js": "^2.57.2",
 		"@tailwindcss/vite": "^4.1.13",
+		"colyseus.js": "^0.16.19",
 		"dotenv": "^17.2.2",
 		"kaplay": "^3001.0.19",
 		"react": "^19.1.1",

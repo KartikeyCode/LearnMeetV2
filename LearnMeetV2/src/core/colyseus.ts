@@ -1,5 +1,3 @@
 import { Client } from "colyseus.js";
 
-export const colyseusSDK = new Client(
-  `${location.protocol}//${location.host}/colyseus`
-);
+export const colyseusSDK = new Client("http://localhost:2567");
