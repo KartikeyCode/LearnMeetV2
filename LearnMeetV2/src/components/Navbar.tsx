@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext"; // <-- Import the useAuth hook
 import { supabase } from "../supabaseClient";
@@ -6,14 +6,18 @@ import { supabase } from "../supabaseClient";
 function Navbar() {
   const { user } = useAuth(); // Get the user from the context
   const navigate = useNavigate();
-
+  // Extract the username part from the email
+  const username = user?.email?.split("@")[0];
+  useEffect(() => {
+    // When the user logs in and the username is available, save it.
+    if (username) {
+      localStorage.setItem("username", username);
+    }
+  }, [username]);
   const handleLogout = async () => {
     await supabase.auth.signOut();
     navigate("/"); // Navigate to home after logout
   };
-
-  // Extract the username part from the email
-  const username = user?.email?.split("@")[0];
 
   return (
     <nav className="bg-gray-800 text-white absolute top-0  shadow-md w-screen px-6 py-4 flex justify-between items-center">
