@@ -186,7 +186,7 @@ function createPlayer(k: KAPLAYCtx, player: Player, isLocal: boolean) {
     k.pos(sprite.pos.x, sprite.pos.y - 30), // Position it above the sprite
     k.anchor("center"),
   ]);
-  // Smoothly interpolate position and update animations for all players
+  // interpolate position and update animations for all players
   sprite.onUpdate(() => {
     sprite.pos.x = k.lerp(sprite.pos.x, player.x, 15 * k.dt());
     sprite.pos.y = k.lerp(sprite.pos.y, player.y, 15 * k.dt());
