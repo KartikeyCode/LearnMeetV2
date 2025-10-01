@@ -1,3 +1,3 @@
 import { Client } from "colyseus.js";
 
-export const colyseusSDK = new Client("http://localhost:2567");
+export const colyseusSDK = new Client("https://learnmeetv2.onrender.com/");
